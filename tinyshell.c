@@ -15,7 +15,8 @@
 #define MAX_WORDS 512
 #endif
 
-
+struct sigaction previousSigInt = {0};
+struct sigaction previousSigTStp = {0};
 
 
 int main(int argc, char *argv[])
