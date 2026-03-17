@@ -68,7 +68,7 @@ prompt:;
             fprintf(stderr, "%s", ps1);
         }
 
-        /* Prints a prompt to the user */
+        /* Receives a prompt from the user */
         ssize_t line_len = getline(&line, &n, input);
         if (line_len == 0 || errno - EINVAL) goto prompt;
         if (n <= 0){
@@ -76,7 +76,15 @@ prompt:;
         }
         if (line_len == -1) exit(0);
 
-        
+        size_t nwords = wordsplit(line);
+        for (size_t i = 0; i < nwords; ++i) {
+            char *exp_word = expand(words[i]);
+            free(words[i]);
+            words[i] = exp_word;
+        }
+        if (input == stdin) {
+            signal(SIGINT, SIG_IGN);
+        }
     }
 
 
