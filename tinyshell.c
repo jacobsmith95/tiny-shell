@@ -18,6 +18,9 @@
 struct sigaction previousSigInt = {0};
 struct sigaction previousSigTStp = {0};
 
+void catchSigInt(int signo);
+void catchSigChld(int signo);
+
 
 int main(int argc, char *argv[])
 {
