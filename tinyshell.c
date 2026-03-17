@@ -43,6 +43,14 @@ int main(int argc, char *argv[])
 
 prompt:;
 
+        /* Creates a sigaction struct for SIGCHLD signal handler */
+        struct sigaction sa_sigchld = {0};
+        sa_sigchld.sa_handler = catchSigChld;
+        sigfillset(&sa_sigchld.sa_mask);
+        sa_sigchld.sa_flags = 0;
+        sigaction(SIGCHLD, &sa_sigchld, NULL);
+
+
         
     }
 
