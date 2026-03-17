@@ -57,6 +57,13 @@ prompt:;
             sigfillset(&sa_sigint.sa_mask);
             sa_sigint.sa_flags = 0;
             sigaction(SIGINT, &sa_sigint, &previousSigInt);
+
+            struct sigaction sa_sigtstp = {0};
+            sa_sigtstp.sa_handler = SIG_IGN;
+            sigfillset(&sa_sigtstp.sa_mask);
+            sa_sigtstp.sa_flags = 0;
+            sigaction(SIGTSTP, &sa_sigtstp, &previousSigTStp);
+            
         }
     }
 
