@@ -50,8 +50,14 @@ prompt:;
         sa_sigchld.sa_flags = 0;
         sigaction(SIGCHLD, &sa_sigchld, NULL);
 
-
-        
+        /* Creates sigaction structs for SIGINT and SIGSTOP signals, then prints a prompt to the user*/
+        if (input == stdin) {
+            struct sigaction sa_sigint = {0};
+            sa_sigint.sa_handler = catchSigInt;
+            sigfillset(&sa_sigint.sa_mask);
+            sa_sigint.sa_flags = 0;
+            sigaction(SIGINT, &sa_sigint, &previousSigInt);
+        }
     }
 
 
