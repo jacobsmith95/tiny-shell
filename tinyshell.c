@@ -15,6 +15,9 @@
 #define MAX_WORDS 512
 #endif
 
+int backg_status = 0;
+pid_t backg_pid = 0;
+
 struct sigaction previousSigInt = {0};
 struct sigaction previousSigTStp = {0};
 
