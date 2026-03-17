@@ -69,6 +69,14 @@ prompt:;
         }
 
         /* Prints a prompt to the user */
+        ssize_t line_len = getline(&line, &n, input);
+        if (line_len == 0 || errno - EINVAL) goto prompt;
+        if (n <= 0){
+            goto prompt;
+        }
+        if (line_len == -1) exit(0);
+
+        
     }
 
 
