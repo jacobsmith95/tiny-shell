@@ -20,6 +20,24 @@
 
 int main(int argc, char *argv[])
 {
+    File *input = stdin;
+    char *input_fun = "(stdin)";
+    if (arg == 2) {
+        input_fn = argv[1];
+        input = fopen(input_fn, "re");
+        if (!input) err(1, "%s", input_fn);
+    } else if (argc > 2) {
+        errx(1, "too many arguments");
+    }
+
+    char *line = Null;
+    size_t n = 0;
+    for (;;) {
+
+prompt:;
+
+        
+    }
 
 
     
