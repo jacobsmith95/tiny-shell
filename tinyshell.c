@@ -46,3 +46,33 @@ prompt:;
 
     
 }
+
+/* Handles SIGINT when reading from interactive input */
+void catchSigInt(int signo) {
+    ;
+}
+
+/* Handles SIGCHLD generated from a background process*/
+void catchSigChld(int signo) {
+    backg_pid = waitpid(-1, &backg_status, WNOHANG | WUNTRACED);
+    if (backg_pid > 0) {
+        if (WIFEXITED(backg_status)){
+            int exit_stat = WEXITSTATUS(backg_status);
+            fprintf(stderr, "Child process %d done. Exit status %d.\n", backg_pid, exit_stat);
+        }
+        else if (WIFSIGNALED(backg_status)){
+            int sig_stat = WTERMSIG(backg_status);
+            fprintf(stderr, "Child process %d done. Signaled %d.\n", backg_pid, sig_stat);
+        }
+        else if (WIFSTOPPED(backg_pid)){
+            int killno = kill(backg_pid, 18);
+            if (killno != 0){
+                perror("Process no continued.\n");
+                exit(1);
+            }
+            else {
+                fprintf(stderr, "Child process %d stopped. Continuing.\n", backg_pid);
+            }
+        }
+    }
+}
