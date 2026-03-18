@@ -117,7 +117,20 @@ parse:;
                     perror("No read file path.\n");
                     exit(1);
                 }
-                
+                ++i
+            } else if (strcmp(words[i], write_str) == 0) {
+                write_bool = 1;
+                if (i != (nwords-1)) {
+                    writeFD = open(nwords[i+1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+                    if (writeFD == -1) {
+                        perror("open write");
+                        exit(1);
+                    }
+                } else {
+                    perror("No write file path.\n");
+                    exit(1);
+                }
+                ++i
             }
         }
 
