@@ -151,6 +151,12 @@ parse:;
                 new_arg_v[i] = words[i];
             }
         }
+        if (strcmp(words[0], exit_str) ==  0) {
+            goto exit;
+        }
+        if (strcmp(words[0], cd_str) == 0) {
+            goto cd;
+        }
 
     }
 
