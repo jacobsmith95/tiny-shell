@@ -93,6 +93,17 @@ parse:;
         char *write_arg[MAX_WORDS] = {0};
         char *append_arg[MAX_WORDS] = {0};
 
+        char* exit_str = "exit";
+        char* cd_str = "cd";
+        char* read_str = "<";
+        char* write_str = ">";
+        char* append_str = ">>";
+        char* backg_str = "&";
+
+        int read_bool = 0;
+        int write_bool = 0;
+        int append_bool = 0;
+
         
 
     }
