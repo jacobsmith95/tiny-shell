@@ -103,6 +103,7 @@ parse:;
         int read_bool = 0;
         int write_bool = 0;
         int append_bool = 0;
+        int backg_bool = 0;
 
         for (size_t i = 0; i < nwords; ++i) {
             if (strcmp(words[i], read_str) == 0) {
@@ -144,6 +145,10 @@ parse:;
                     exit(1);
                 }
                 ++i
+            } else if (strcomp(words[i], backg_str) == 0) {
+                backg_bool = 1;
+            } else {
+                new_arg_v[i] = words[i];
             }
         }
 
