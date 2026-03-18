@@ -85,10 +85,18 @@ prompt:;
         if (input == stdin) {
             signal(SIGINT, SIG_IGN);
         }
+
+parse:;
+/* parses user input from the expand function into tokens for executions */
+        char *new_arg_v[MAX_WORDS] = {0};
+        char *read_arg[MAX_WORDS] = {0};
+        char *write_arg[MAX_WORDS] = {0};
+        char *append_arg[MAX_WORDS] = {0};
+
+        
+
     }
 
-
-    
 }
 
 /* Handles SIGINT when reading from interactive input */
