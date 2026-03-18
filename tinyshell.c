@@ -104,7 +104,22 @@ parse:;
         int write_bool = 0;
         int append_bool = 0;
 
-        
+        for (size_t i = 0; i < nwords; ++i) {
+            if (strcmp(words[i], read_str) == 0) {
+                read_bool = 1;
+                if (i != (nwords-1)) {
+                    readFD = open(words[i+1], O_RDONLY);
+                    if (readFD == -1) {
+                        perror("open read");
+                        exit(1);
+                    }
+                } else {
+                    perror("No read file path.\n");
+                    exit(1);
+                }
+                
+            }
+        }
 
     }
 
