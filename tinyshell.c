@@ -131,6 +131,19 @@ parse:;
                     exit(1);
                 }
                 ++i
+            } else if (strcmp(words[i], append_str) == 0) {
+                append_bool = 1;
+                if (i != (nwords-1)) {
+                    appendFD = open(words[i+1], O_WRONLY | O_CREAT | O_APPEND, 0777);
+                    if (appendFD == -1) {
+                        perror("open append");
+                        exit(1);
+                    }
+                } else {
+                    perror("No append file path.\n");
+                    exit(1);
+                }
+                ++i
             }
         }
 
