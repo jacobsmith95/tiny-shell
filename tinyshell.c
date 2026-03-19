@@ -16,6 +16,9 @@
 #endif
 
 int backg_status = 0;
+int readFD = 0;
+int appendFD = 0;
+int writeFD = 0;
 pid_t backg_pid = 0;
 
 struct sigaction previousSigInt = {0};
