@@ -161,6 +161,13 @@ parse:;
             goto exit;
         }
 
+
+exit:;
+/* runs the built-in exit command with the given exit status*/
+        if (nwords > 2) {
+
+        }
+
     }
 
 }
