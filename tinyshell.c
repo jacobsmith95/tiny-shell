@@ -161,6 +161,12 @@ parse:;
             goto exit;
         }
 
+cd:;
+/* changes the working directory of the process and returns to the prompt handler*/
+        if (nwords >2) {
+            perror("Too many arguments.\n");
+            exit(1);
+        }
 
 exit:;
 /* runs the built-in exit command with the given exit status*/
