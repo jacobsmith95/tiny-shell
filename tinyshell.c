@@ -165,11 +165,15 @@ parse:;
 exit:;
 /* runs the built-in exit command with the given exit status*/
         if (nwords > 2) {
-
+            perror("Too many arguments.\n");
+            exit(1);
+        } else if (nwords == 2) {
+            int exit_status = atoi(words[1]);
+            exit(exit_status);
+        } else {
+            exit(0);
         }
-
     }
-
 }
 
 /* Handles SIGINT when reading from interactive input */
