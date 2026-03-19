@@ -166,7 +166,21 @@ cd:;
         if (nwords >2) {
             perror("Too many arguments.\n");
             exit(1);
+        } else if (nwords == 2) {
+            int ch_dir = chdir(words[1]);
+            if (ch_dir < 0) {
+                perror("Failed to set new directory.\n");
+                exit(1);
+            }
+        } else {
+            char* home = getenv("HOME");
+            int ch_dir = chdir(home);
+            if (ch_dir < 0) {
+                perror("Failed to return to home directory.\n");
+                exit(1);
+            }
         }
+        goto prompt;
 
 exit:;
 /* runs the built-in exit command with the given exit status*/
