@@ -172,6 +172,13 @@ execute:;
                 perror("Failed to fork process.\n");
                 exit(1);
                 break;
+            
+            case 0:
+                if (input == stdin) {
+                    sigaction(SIGINT, &previousSigInt, NULL);
+                    sigaction(SIGSTP, &previousSigTStp, NULL);
+                }
+                
         }
 cd:;
 /* changes the working directory of the process and returns to the prompt handler*/
