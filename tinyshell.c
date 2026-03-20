@@ -178,7 +178,15 @@ execute:;
                     sigaction(SIGINT, &previousSigInt, NULL);
                     sigaction(SIGSTP, &previousSigTStp, NULL);
                 }
-                
+                if (read_bool == 1) {
+
+                }
+                if (append_bool == 1) {
+
+                }
+                if (write_bool == 1) {
+                    
+                }
         }
 cd:;
 /* changes the working directory of the process and returns to the prompt handler*/
