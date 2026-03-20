@@ -193,8 +193,13 @@ execute:;
                     }
                 }
                 if (write_bool == 1) {
-                    
+                    int result = dup2(writeFD, 1);
+                    if (result == -1) {
+                        perror("Error duping writeFD.\n");
+                        exit(2);
+                    }
                 }
+                
         }
 cd:;
 /* changes the working directory of the process and returns to the prompt handler*/
