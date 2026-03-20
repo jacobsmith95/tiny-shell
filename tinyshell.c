@@ -161,6 +161,15 @@ parse:;
             goto exit;
         }
 
+execute:;
+/* forks the current process, performs necessary I/O redirects, then runs the given non-built-in command with execvp;
+ * finally, the parent process moves on if the child is background, or otherwise waits for the child to finish. */
+        int childStatus;
+        pid_t childPID = fork();
+
+        switch(childPID) {
+            
+        }
 cd:;
 /* changes the working directory of the process and returns to the prompt handler*/
         if (nwords >2) {
