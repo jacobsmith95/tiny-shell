@@ -186,10 +186,14 @@ execute:;
                     }
                 }
                 if (append_bool == 1) {
-
+                    int result = dup2(appendFD, 1);
+                    if (result == -1) {
+                        perror("Error duping appendFD.\n");
+                        exit(2);
+                    }
                 }
                 if (write_bool == 1) {
-
+                    
                 }
         }
 cd:;
