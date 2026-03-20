@@ -199,7 +199,10 @@ execute:;
                         exit(2);
                     }
                 }
-                
+                execvp(new_arg_v[0], new_arg_v);
+                perror("Error executing new command.\n")
+                exit(2);
+                break;
         }
 cd:;
 /* changes the working directory of the process and returns to the prompt handler*/
