@@ -179,13 +179,17 @@ execute:;
                     sigaction(SIGSTP, &previousSigTStp, NULL);
                 }
                 if (read_bool == 1) {
-
+                    int result = dup2(readFD, 0);
+                    if (result == -1) {
+                        perror("Error duping readFD.\n");
+                        exit(2);
+                    }
                 }
                 if (append_bool == 1) {
 
                 }
                 if (write_bool == 1) {
-                    
+
                 }
         }
 cd:;
