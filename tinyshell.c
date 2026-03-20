@@ -168,7 +168,10 @@ execute:;
         pid_t childPID = fork();
 
         switch(childPID) {
-            
+            case -1:
+                perror("Failed to fork process.\n");
+                exit(1);
+                break;
         }
 cd:;
 /* changes the working directory of the process and returns to the prompt handler*/
