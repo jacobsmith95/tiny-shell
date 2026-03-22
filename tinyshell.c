@@ -224,6 +224,12 @@ execute:;
                         char mystat[8];
                         sprintf(mystat, "%d", stat);
                         status = mystat;
+                    } else if (WIFSIGNALED(childStatus)) {
+                        int sig_stat = WTERMSIG(childStatus);
+                        int stat = sig_stat + 128;
+                        char mystat[8];
+                        sprintf(mystat, "%d", stat);
+                        status = mystat;
                     }
                 }
         }
