@@ -217,6 +217,9 @@ execute:;
                     signal(SIGCHLD, catchSigChld);
 
                     goto prompt;
+                } else if (backg_bool == 0) {
+                    childPID = waitpid(childPID, &childStatus, WUNTRACED);
+                    
                 }
         }
 
