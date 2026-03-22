@@ -219,7 +219,12 @@ execute:;
                     goto prompt;
                 } else if (backg_bool == 0) {
                     childPID = waitpid(childPID, &childStatus, WUNTRACED);
-                    
+                    if (WIFEXITED(childStatus)) {
+                        int stat = WEXISTATUS(childStatus);
+                        char mystat[8];
+                        sprintf(mystat, "%d", stat);
+                        status = mystat;
+                    }
                 }
         }
 
