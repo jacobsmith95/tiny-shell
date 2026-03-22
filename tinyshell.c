@@ -244,6 +244,9 @@ execute:;
                         }
                     }
                 }
+        
+        goto prompt;
+
         }
 
 cd:;
