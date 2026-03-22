@@ -230,6 +230,18 @@ execute:;
                         char mystat[8];
                         sprintf(mystat, "%d", stat);
                         status = mystat;
+                    } else if (WIFSTOPPED(childStatus)) {
+                        int kill_no = kill(childPID, SIGCONT);
+                        if (kill_no != 0) {
+                            perror("Process not killed.\n");
+                            exit(1);
+                        } else {
+                            char bpid[8];
+                            sprintf(bpid, "%d", childPID);
+                            bgpid = bpid;
+                            backg_pid = childPID;
+                            fprintf(stderr, "Child process %d stopped. Continuing.\n", childPID);
+                        }
                     }
                 }
         }
