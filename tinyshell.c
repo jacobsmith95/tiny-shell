@@ -205,7 +205,19 @@ execute:;
                 break;
 
             default:
-                
+                if (backg_bool == 1) {
+                    char bpid[8];
+                    sprintf(bpid, "%d", childPID);
+                    bgpid = bpid;
+
+                    backg_pid = childPID;
+
+                    backg_bool = 0;
+
+                    signal(SIGCHLD, catchSigChld);
+
+                    goto prompt;
+                }
         }
 
 cd:;
