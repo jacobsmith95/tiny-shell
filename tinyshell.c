@@ -203,7 +203,11 @@ execute:;
                 perror("Error executing new command.\n")
                 exit(2);
                 break;
+
+            default:
+                
         }
+
 cd:;
 /* changes the working directory of the process and returns to the prompt handler*/
         if (nwords >2) {
