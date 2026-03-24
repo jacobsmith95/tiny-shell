@@ -116,12 +116,10 @@ parse:;
                 if (i != (nwords-1)) {
                     readFD = open(words[i+1], O_RDONLY);
                     if (readFD == -1) {
-                        perror("open read");
-                        exit(1);
+                        err(1, "Failed to open read doc.\n");
                     }
                 } else {
-                    perror("No read file path.\n");
-                    exit(1);
+                    err(1, "No read file path.\n");
                 }
                 ++i
             } else if (strcmp(words[i], write_str) == 0) {
@@ -129,12 +127,10 @@ parse:;
                 if (i != (nwords-1)) {
                     writeFD = open(nwords[i+1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
                     if (writeFD == -1) {
-                        perror("open write");
-                        exit(1);
+                        err(1, "Failed to open write doc.\n");
                     }
                 } else {
-                    perror("No write file path.\n");
-                    exit(1);
+                    err(1, "No write file path.\n");
                 }
                 ++i
             } else if (strcmp(words[i], append_str) == 0) {
@@ -142,12 +138,10 @@ parse:;
                 if (i != (nwords-1)) {
                     appendFD = open(words[i+1], O_WRONLY | O_CREAT | O_APPEND, 0777);
                     if (appendFD == -1) {
-                        perror("open append");
-                        exit(1);
+                        err(1, "Failed to open append doc.\n");
                     }
                 } else {
-                    perror("No append file path.\n");
-                    exit(1);
+                    err(1, "No append file path.\n");
                 }
                 ++i
             } else if (strcomp(words[i], backg_str) == 0) {
@@ -173,8 +167,7 @@ execute:;
 
         switch(childPID) {
             case -1:
-                perror("Failed to fork process.\n");
-                exit(1);
+                err(1, "Failed to fork process.\n");
                 break;
             
             case 0:
@@ -185,27 +178,23 @@ execute:;
                 if (read_bool == 1) {
                     int result = dup2(readFD, 0);
                     if (result == -1) {
-                        perror("Error duping readFD.\n");
-                        exit(2);
+                        err(2, "Error duping readFD.\n");
                     }
                 }
                 if (append_bool == 1) {
                     int result = dup2(appendFD, 1);
                     if (result == -1) {
-                        perror("Error duping appendFD.\n");
-                        exit(2);
+                        err(2, "Error duping appendFD.\n");
                     }
                 }
                 if (write_bool == 1) {
                     int result = dup2(writeFD, 1);
                     if (result == -1) {
-                        perror("Error duping writeFD.\n");
-                        exit(2);
+                        err(2, "Error duping writeFD.\n");
                     }
                 }
                 execvp(new_arg_v[0], new_arg_v);
-                perror("Error executing new command.\n")
-                exit(2);
+                err(2, "Error executing new command.\n")
                 break;
 
             default:
@@ -237,8 +226,7 @@ execute:;
                     } else if (WIFSTOPPED(childStatus)) {
                         int kill_no = kill(childPID, SIGCONT);
                         if (kill_no != 0) {
-                            perror("Process not killed.\n");
-                            exit(1);
+                            err(1, "Process not killed.\n");
                         } else {
                             char bpid[8];
                             sprintf(bpid, "%d", childPID);
@@ -256,20 +244,17 @@ execute:;
 cd:;
 /* changes the working directory of the process and returns to the prompt handler*/
         if (nwords >2) {
-            perror("Too many arguments.\n");
-            exit(1);
+            err(1, "Too many arguments.\n");
         } else if (nwords == 2) {
             int ch_dir = chdir(words[1]);
             if (ch_dir < 0) {
-                perror("Failed to set new directory.\n");
-                exit(1);
+                err(1, "Failed to set new directory.\n");
             }
         } else {
             char* home = getenv("HOME");
             int ch_dir = chdir(home);
             if (ch_dir < 0) {
-                perror("Failed to return to home directory.\n");
-                exit(1);
+                err(1, "Failed to return to home directory.\n");
             }
         }
         goto prompt;
@@ -277,8 +262,7 @@ cd:;
 exit:;
 /* runs the built-in exit command with the given exit status*/
         if (nwords > 2) {
-            perror("Too many arguments.\n");
-            exit(1);
+            err(1, "Too many arguments.\n");
         } else if (nwords == 2) {
             int exit_status = atoi(words[1]);
             exit(exit_status);
