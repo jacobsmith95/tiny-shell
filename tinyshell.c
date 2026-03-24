@@ -300,7 +300,11 @@ size_t wordsplit(char const *line) {
     for (;*c && isspace(*c); ++c);
 
     for (; *c) {
-        
+        if (wind == MAX_WORDS) break;
+        if (*c == '#') break;
+        for (:*c && !isspace(*c); ++c) {
+            
+        }
     }
 }
 
