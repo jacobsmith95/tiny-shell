@@ -325,6 +325,10 @@ char param_scan() {
                 *end = s + 2;
                 break;
             case '?':
+                ret = [1];
+                *start = s;
+                *end = s + 2;
+                break;
             case '{':
         }
     }
