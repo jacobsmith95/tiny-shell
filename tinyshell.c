@@ -303,7 +303,12 @@ size_t wordsplit(char const *line) {
         if (wind == MAX_WORDS) break;
         if (*c == '#') break;
         for (:*c && !isspace(*c); ++c) {
-            
+            if (*c == '\\') ++c;
+            void *temp = realloc(words[wind], sizeof **words * (wlen + 2));
+            if (!temp) err(1, "Failed to reallocate.\n");
+            words[wind] = temp;
+            words[wind][wlen++] = *c;
+            words[wind][wlen] = '\0';
         }
     }
 }
