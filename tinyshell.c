@@ -321,8 +321,7 @@ void catchSigChld(int signo) {
         else if (WIFSTOPPED(backg_pid)){
             int killno = kill(backg_pid, 18);
             if (killno != 0){
-                perror("Process no continued.\n");
-                exit(1);
+                err(1, "Process no continued.\n");
             }
             else {
                 fprintf(stderr, "Child process %d stopped. Continuing.\n", backg_pid);
