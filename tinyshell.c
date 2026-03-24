@@ -330,6 +330,13 @@ char param_scan() {
                 *end = s + 2;
                 break;
             case '{':
+                char *e = strchr(s + 2, '}');
+                if (e) {
+                    ret = s[1];
+                    *start = s;
+                    *end = e + 1;
+                }
+                break;
         }
     }
 }
