@@ -314,10 +314,14 @@ char param_scan() {
         s = strchr(s, '$');
         if (!s) break;
         switch (s[1]) {
-            case '':
-            case '':
-            case '':
-            case '':
+            case '$':
+                ret = s[1];
+                *start = s;
+                *end = s + 2;
+                break;
+            case '!':
+            case '?':
+            case '{':
         }
     }
 }
