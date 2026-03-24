@@ -301,6 +301,12 @@ size_t wordsplit(char const *line) {
     return wind;
 }
 
+/* Finds the next instance of a given parameter within a word.
+ * Sets start and end pointers to the start and end of the parameter token.*/
+char param_scan() {
+    
+}
+
 /* Handles SIGINT when reading from interactive input */
 void catchSigInt(int signo) {
     ;
