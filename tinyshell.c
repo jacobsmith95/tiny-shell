@@ -21,6 +21,8 @@ int appendFD = 0;
 int writeFD = 0;
 pid_t backg_pid = 0;
 
+char *words[MAX_WORDS] = {0};
+
 struct sigaction previousSigInt = {0};
 struct sigaction previousSigTStp = {0};
 
@@ -290,6 +292,17 @@ exit:;
  * Recognizes comments starting with #
  * And backslash escapes.
  * Returns number of words parsed and updates the words array*/
+size_t wordsplit(char const *line) {
+    size_t wlen = 0;
+    size_t wind = 0;
+
+    char const *c = line;
+    for (;*c && isspace(*c); ++c);
+
+    for (; *c) {
+        
+    }
+}
 
 /* Handles SIGINT when reading from interactive input */
 void catchSigInt(int signo) {
