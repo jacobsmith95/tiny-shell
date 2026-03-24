@@ -162,8 +162,10 @@ parse:;
         }
 
 execute:;
-/* forks the current process, performs necessary I/O redirects, then runs the given non-built-in command with execvp;
- * finally, the parent process moves on if the child is background, or otherwise waits for the child to finish. */
+/* forks the current process, performs necessary I/O redirects,
+ * then runs the given non-built-in command with execvp;
+ * finally, the parent process moves on if the child is background, 
+ * or otherwise waits for the child to finish. */
         int childStatus;
         pid_t childPID = fork();
 
@@ -283,6 +285,11 @@ exit:;
         }
     }
 }
+
+/* Splits strings into words delimited by whitespaces.
+ * Recognizes comments starting with #
+ * And backslash escapes.
+ * Returns number of words parsed and updates the words array*/
 
 /* Handles SIGINT when reading from interactive input */
 void catchSigInt(int signo) {
