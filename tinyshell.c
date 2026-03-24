@@ -304,6 +304,12 @@ size_t wordsplit(char const *line) {
 /* Finds the next instance of a given parameter within a word.
  * Sets start and end pointers to the start and end of the parameter token.*/
 char param_scan() {
+    static char const *prev;
+    if (!word) word = prev;
+
+    char ret = 0;
+    *start = 0;
+    *end = 0;
     
 }
 
