@@ -311,7 +311,9 @@ char param_scan() {
     *start = 0;
     *end = 0;
     for (char const *s = word; *s && !ret; ++s) {
-        
+        switch (s[1]) {
+            
+        }
     }
 }
 
