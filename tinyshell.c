@@ -310,7 +310,9 @@ char param_scan() {
     char ret = 0;
     *start = 0;
     *end = 0;
-    
+    for (char const *s = word; *s && !ret; ++s) {
+        
+    }
 }
 
 /* Handles SIGINT when reading from interactive input */
