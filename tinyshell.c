@@ -310,7 +310,11 @@ size_t wordsplit(char const *line) {
             words[wind][wlen++] = *c;
             words[wind][wlen] = '\0';
         }
+        ++wind;
+        wlen = 0;
+        for (;*c && isspace(*c); ++c);
     }
+    return wind;
 }
 
 /* Handles SIGINT when reading from interactive input */
