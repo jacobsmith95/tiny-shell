@@ -23,6 +23,8 @@ pid_t backg_pid = 0;
 
 char *words[MAX_WORDS] = {0};
 
+size_t wordsplit(char const *line);
+
 struct sigaction previousSigInt = {0};
 struct sigaction previousSigTStp = {0};
 
@@ -303,7 +305,7 @@ size_t wordsplit(char const *line) {
 
 /* Finds the next instance of a given parameter within a word.
  * Sets start and end pointers to the start and end of the parameter token.*/
-char param_scan() {
+char param_scan(char const *word, char const **start, char const **end) {
     static char const *prev;
     if (!word) word = prev;
 
