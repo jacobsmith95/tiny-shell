@@ -339,6 +339,8 @@ char param_scan() {
                 break;
         }
     }
+    prev = *end;
+    return ret;
 }
 
 /* Handles SIGINT when reading from interactive input */
