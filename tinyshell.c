@@ -311,8 +311,13 @@ char param_scan() {
     *start = 0;
     *end = 0;
     for (char const *s = word; *s && !ret; ++s) {
+        s = strchr(s, '$');
+        if (!s) break;
         switch (s[1]) {
-            
+            case '':
+            case '':
+            case '':
+            case '':
         }
     }
 }
