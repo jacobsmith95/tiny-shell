@@ -347,12 +347,15 @@ char param_scan(char const *word, char const **start, char const **end) {
 
 /* Simple string builder. Appends supplied strings to base string.*/
 char *build_str() {
-    
+
 }
 
 /* Handles SIGINT when reading from interactive input */
 void catchSigInt(int signo) {
-    ;
+    static size_t base_len = 0;
+    static char *base = 0;
+
+    
 }
 
 /* Handles SIGCHLD generated from a background process*/
