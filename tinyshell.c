@@ -356,6 +356,10 @@ char *build_str() {
         base_len = 0;
         return ret;
     }
+    size_t n = end ? end - start : strlen(start);
+    size_t newsize = sizeof *base *(base_len + n + 1);
+    void *tmp = realloc(base, newsize);
+    
 }
 
 /* Handles SIGINT when reading from interactive input */
