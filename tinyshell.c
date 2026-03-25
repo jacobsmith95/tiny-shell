@@ -345,6 +345,11 @@ char param_scan(char const *word, char const **start, char const **end) {
     return ret;
 }
 
+/* Simple string builder. Appends supplied strings to base string.*/
+char *build_str() {
+    
+}
+
 /* Handles SIGINT when reading from interactive input */
 void catchSigInt(int signo) {
     ;
