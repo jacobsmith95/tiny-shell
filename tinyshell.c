@@ -349,6 +349,13 @@ char param_scan(char const *word, char const **start, char const **end) {
 char *build_str() {
     static size_t base_len = 0;
     static char *base = 0;
+
+    if (!start) {
+        char *ret = base;
+        base = NULL;
+        base_len = 0;
+        return ret;
+    }
 }
 
 /* Handles SIGINT when reading from interactive input */
