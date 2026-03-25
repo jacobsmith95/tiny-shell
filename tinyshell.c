@@ -359,7 +359,15 @@ char *build_str() {
     size_t n = end ? end - start : strlen(start);
     size_t newsize = sizeof *base *(base_len + n + 1);
     void *tmp = realloc(base, newsize);
-    
+    if (!tmp) {
+        err(1, "Failed to reallocate base.\n")
+    }
+    base = tmp;
+    memcpy(base + base_len, start, n);
+    base_len += n;
+    base[base_len] = '\0';
+
+    return base;
 }
 
 /* Handles SIGINT when reading from interactive input */
