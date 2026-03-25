@@ -346,7 +346,7 @@ char param_scan(char const *word, char const **start, char const **end) {
 }
 
 /* Simple string builder. Appends supplied strings to base string.*/
-char *build_str() {
+char *build_str(char const *start, char const *end) {
     static size_t base_len = 0;
     static char *base = 0;
 
