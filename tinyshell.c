@@ -383,8 +383,8 @@ char *expand() {
     build_str(NULL, NULL);
     build_str(pos, start);
     while (c) {
-        if ()
-        else if ()
+        if (c == '!') build_str(bgpid, NULL);
+        else if (c == '$') build_str(mypid, NULL);
         else if ()
         else () {
             if () {
