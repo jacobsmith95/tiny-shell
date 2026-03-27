@@ -383,7 +383,17 @@ char *expand() {
     build_str(NULL, NULL);
     build_str(pos, start);
     while (c) {
+        if ()
+        else if ()
+        else if ()
+        else () {
+            if () {
 
+            } else {
+                
+            }
+        }
+        
     }
     return build_str(start, NULL);
 }
