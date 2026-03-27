@@ -389,10 +389,11 @@ char *expand() {
         else if (c == '{') {
             char* parameter = build_str(start + 2, end - 1);
             char* get_env = getenv(parameter);
-            if () {
-
+            if (get_env == NULL) {
+                build_str(NULL, NULL);
             } else {
-
+                build_str(NULL, NULL);
+                build_str(get_env, NULL);
             }
         }
         pos = end;
