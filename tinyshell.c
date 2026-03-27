@@ -385,8 +385,8 @@ char *expand() {
     while (c) {
         if (c == '!') build_str(bgpid, NULL);
         else if (c == '$') build_str(mypid, NULL);
-        else if ()
-        else () {
+        else if (c == '?') build_str(status, NULL);
+        else (c == '{') {
             if () {
 
             } else {
