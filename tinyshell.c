@@ -377,6 +377,9 @@ char *expand() {
     char mypid[6];
     sprintf(mypid, "%d", pid);
 
+    char const *pos = word;
+    char *start, *end;
+    char c = param_scan(pos, &start, &end);
     
 }
 
