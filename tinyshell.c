@@ -390,10 +390,12 @@ char *expand() {
             if () {
 
             } else {
-                
+
             }
         }
-        
+        pos = end;
+        c = param_scan(pos, &start, &end);
+        build_str(pos, start);
     }
     return build_str(start, NULL);
 }
