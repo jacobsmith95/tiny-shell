@@ -370,6 +370,12 @@ char *build_str(char const *start, char const *end) {
     return base;
 }
 
+/* Expands all instances of $! $$ $? and ${param} in a string.
+ * Returns a newly allocated string that the caller must free. */
+char *expand() {
+    
+}
+
 /* Handles SIGINT when reading from interactive input */
 void catchSigInt(int signo) {
     ;
