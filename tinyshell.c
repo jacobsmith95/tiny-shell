@@ -386,7 +386,9 @@ char *expand() {
         if (c == '!') build_str(bgpid, NULL);
         else if (c == '$') build_str(mypid, NULL);
         else if (c == '?') build_str(status, NULL);
-        else (c == '{') {
+        else if (c == '{') {
+            char* parameter = build_str(start + 2, end - 1);
+            char* get_env = getenv(parameter);
             if () {
 
             } else {
