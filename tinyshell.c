@@ -380,7 +380,12 @@ char *expand() {
     char const *pos = word;
     char *start, *end;
     char c = param_scan(pos, &start, &end);
-    
+    build_str(NULL, NULL);
+    build_str(pos, start);
+    while (c) {
+
+    }
+    return build_str(start, NULL);
 }
 
 /* Handles SIGINT when reading from interactive input */
