@@ -373,6 +373,10 @@ char *build_str(char const *start, char const *end) {
 /* Expands all instances of $! $$ $? and ${param} in a string.
  * Returns a newly allocated string that the caller must free. */
 char *expand() {
+    int pid = getpid();
+    char mypid[6];
+    sprintf(mypid, "%d", pid);
+
     
 }
 
