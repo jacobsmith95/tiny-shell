@@ -3,5 +3,5 @@
 #include <unistd.h>
 
 int main(int argc, char *argv[]) {
-    return ();
+    return (argc > 1 ? atoi(argv[1]) : 0);
 }
