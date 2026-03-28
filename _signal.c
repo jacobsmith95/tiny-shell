@@ -3,6 +3,6 @@
 #include <unistd.h>
 #include <signal.h>
 
-int main() {
-    return ;
+int main(int argc, char *arv[]) {
+    return 0;
 }
