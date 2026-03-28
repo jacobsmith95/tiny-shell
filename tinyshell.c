@@ -21,9 +21,14 @@ int appendFD = 0;
 int writeFD = 0;
 pid_t backg_pid = 0;
 
-char *words[MAX_WORDS] = {0};
+char *words[MAX_WORDS];
+char *new_arg_v[MAX_WORDS];
+char *read_arg[MAX_WORDS];
+char *write_arg[MAX_WORDS];
+char *append_arg[MAX_WORDS];
 
 size_t wordsplit(char const *line);
+char *expand(char const *word);
 
 struct sigaction previousSigInt = {0};
 struct sigaction previousSigTStp = {0};
@@ -372,7 +377,7 @@ char *build_str(char const *start, char const *end) {
 
 /* Expands all instances of $! $$ $? and ${param} in a string.
  * Returns a newly allocated string that the caller must free. */
-char *expand() {
+char *expand(char const *word) {
     int pid = getpid();
     char mypid[6];
     sprintf(mypid, "%d", pid);
