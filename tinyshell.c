@@ -40,6 +40,8 @@ void catchSigChld(int signo);
 int main(int argc, char *argv[]) {
     if (argc == 0) {
         goto interactive_mode
+    } else if (argc == 1) {
+        goto non_interactive_mode
     }
 
 non_interactive_mode:;
