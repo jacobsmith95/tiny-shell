@@ -38,7 +38,11 @@ void catchSigChld(int signo);
 
 
 int main(int argc, char *argv[]) {
-    if ()
+    if (argc == 0) {
+        goto interactive_mode
+    }
+
+non_interactive_mode:;
 
 interactive_mode:;
 /* Reads input from the user interactively */  
