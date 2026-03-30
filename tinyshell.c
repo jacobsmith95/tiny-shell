@@ -37,8 +37,11 @@ void catchSigInt(int signo);
 void catchSigChld(int signo);
 
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
+    if ()
+
+interactive_mode:;
+/* Reads input from the user interactively */  
     File *input = stdin;
     char *input_fun = "(stdin)";
     if (arg == 2) {
@@ -54,7 +57,6 @@ int main(int argc, char *argv[])
     for (;;) {
 
 prompt:;
-
         /* Creates a sigaction struct for SIGCHLD signal handler */
         struct sigaction sa_sigchld = {0};
         sa_sigchld.sa_handler = catchSigChld;
