@@ -1,0 +1,1 @@
+tinyshell: tinyshell.c ; gcc -std=c99 -o tinyshell tinyshell.c
